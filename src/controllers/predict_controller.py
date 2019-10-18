@@ -12,9 +12,10 @@ def predict ():
 		body = connexion.request.get_json()
 		body_parse_model = body["model"]
 		body_parse_sample = body["samples"]
+		print(body_parse_sample)
 		mod = Model_wrapper(body_parse_model)
 		try:
-			response = {"predictions" : mod.predict()} , 200
+			response = {"predictions" : mod.predict(body_parse_sample)} , 200
 		except KeyError:
 			response = {} , 404
 
