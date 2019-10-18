@@ -19,6 +19,9 @@ paths:
                 application/json :
                   schema:
                     $ref: '#/components/schemas/Pred'
+                    required:
+                      - model
+                      - samples
       responses:
         '200':    # status code
           description: 'perfect' 
@@ -45,7 +48,7 @@ components:
       properties:
         "model":
           type: string
-        "Samples":
+        "samples":
           type: array
           items:
             type: array
