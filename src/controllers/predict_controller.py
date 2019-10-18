@@ -9,12 +9,12 @@ from services.model_wrapper import Model_wrapper
 def predict ():
 	#check if connexion requets is json format
 	if connexion.request.is_json:
-		mod = Model_wrapper()
 		body = connexion.request.get_json()
-		print(body)
-		body_parse_id = json.dumps(body["id"])
+		body_parse_model = body["model"]
+		body_parse_sample = body["samples"]
+		mod = Model_wrapper(body_parse_model)
 		try:
-			response = {"id" : mod.predict()} , 200
+			response = {"predictions" : mod.predict()} , 200
 		except KeyError:
 			response = {} , 404
 
