@@ -18,20 +18,15 @@ paths:
               content:
                 application/json :
                   schema:
-                    type: object
-                    properties:
-                      id:
-                        type: integer
+                    $ref: '#/components/schemas/Pred'
       responses:
         '200':    # status code
           description: 'perfect' 
           content:
             application/json:
               schema: 
-                type: object
-                properties:
-                  id:
-                    type: integer
+                $ref: '#/components/schemas/Res'
+
         '400':
           description: 'Bad request. User ID must be an integer and larger than 0.'
         '401':
@@ -43,4 +38,24 @@ paths:
           
                   
                   
-            
+components:
+  schemas:
+    Pred:
+      type: object
+      properties:
+        "model":
+          type: string
+        "Samples":
+          type: array
+          items:
+            type: array
+            items: 
+              type: integer
+    Res:
+      type: object
+      properties:
+        "predictions":
+          type : array
+          items:
+            type: integer
+
