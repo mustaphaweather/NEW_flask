@@ -31,7 +31,7 @@ paths:
                 $ref: '#/components/schemas/Res'
 
         '400':
-          description: 'Bad request. User ID must be an integer and larger than 0.'
+          description: 'Bad request'
         '401':
           description: 'Authorization information is missing or invalid.'
         '404':
