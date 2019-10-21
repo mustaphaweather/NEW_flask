@@ -53,12 +53,17 @@ components:
           items:
             type: array
             items: 
-              type: integer
+              type: number
+              format: double
+              minimum: 0
+            minItems: 5
+            maxItems: 5
     Res:
       type: object
       properties:
         "predictions":
           type : array
           items:
-            type: integer
+            type: number
+            format: double
 
