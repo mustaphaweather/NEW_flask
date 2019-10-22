@@ -5,7 +5,7 @@ class Config:
 
 #Developpement Config
 class Devconfig(Config):
-	ENVIRONEMENT = "developpement"
+	ENVIRONEMENT = "developement"
 	DEBUG = True
 
 #Production Config
