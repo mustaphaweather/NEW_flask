@@ -17,15 +17,19 @@ else :
 	DefaultConfig = Testconfig
 
 def create_app(config_class = DefaultConfig):
-	log = Logger('logbook' , INFO)
-	#show logging messages in terminal
-	StreamHandler(sys.stdout).push_application()
-	log.info('welcome to my application API MODE {}'.format(env('FLASK_ENV','developement')))
-
 	app = connexion.FlaskApp(
 		    __name__, specification_dir='openapi/', options={"swagger_ui": False, "serve_spec": False}
 		)
 	app.app.config.from_object(config_class)
+
+	log = Logger('logbook' , INFO)
+	log.info(app.app.config['LOG_LEVEL'])
+	#show logging messages in terminal
+	StreamHandler(sys.stdout ,
+		level = app.app.config['LOG_LEVEL']).push_application()
+
+	log.info('welcome to my application API MODE {}'.format(env('FLASK_ENV','developement')))
+
 	app.add_api("swagger.yaml", strict_validation=True)
 	flask_app = app.app
 	return flask_app
