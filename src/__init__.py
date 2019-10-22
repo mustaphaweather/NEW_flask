@@ -2,9 +2,10 @@ from flask import Flask
 import connexion
 import os
 from logbook import Logger , StreamHandler , ERROR, WARNING, DEBUG, INFO
-import sys 
+import sys
+from config import Devconfig , Prodconfig  
 
-def create_app():
+def create_app(config_class = Devconfig):
 	#show logging messages in terminal
 	StreamHandler(sys.stdout).push_application()
 
@@ -15,6 +16,7 @@ def create_app():
 	app = connexion.FlaskApp(
 		    __name__, specification_dir='openapi/', options={"swagger_ui": False, "serve_spec": False}
 		)
+	app.app.config.from_object(config_class)
 	app.add_api("swagger.yaml", strict_validation=True)
 	flask_app = app.app
 	return flask_app
