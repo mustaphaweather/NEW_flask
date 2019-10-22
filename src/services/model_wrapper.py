@@ -4,6 +4,9 @@ import os
 import pandas as pd
 import sklearn
 from logbook import Logger , ERROR, WARNING, DEBUG, INFO
+import sys
+sys.path.append("..")
+from config import Config
 
 log = Logger('logbook', DEBUG)
 
@@ -17,9 +20,9 @@ class Model_wrapper():
 		log.debug('Passed model_name to class : {}'.format(model_name))
 		self.model_name = model_name
 		self.mod_dict = {
-		'dpl': 'C:/Users/ASUS/Desktop/ML_API/NEW_flask/src/services/models/deep_learning' ,
-		'xgb': 'C:/Users/ASUS/Desktop/ML_API/NEW_flask/src/services/models/XGBRegressor',
-		'rnd': 'C:/Users/ASUS/Desktop/ML_API/NEW_flask/src/services/models/RandomForest'
+		'dpl': Config.DPL_MODEL_PATH ,
+		'xgb': Config.XGB_MODEL_PATH,
+		'rnd': Config.RND_MODEL_PATH
 		}
 		
 		self.model_path = self.mod_dict.get(self.model_name)
