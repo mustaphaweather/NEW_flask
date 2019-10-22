@@ -3,15 +3,24 @@ import connexion
 import os
 from logbook import Logger , StreamHandler , ERROR, WARNING, DEBUG, INFO
 import sys
-from config import Devconfig , Prodconfig  
+from config import Devconfig , Prodconfig   , Testconfig
+from environs import Env
 
-def create_app(config_class = Devconfig):
+### Setting environement configuration depending on environement variable
+env = Env()
+env.read_env() #read .env file
+if env('FLASK_ENV', 'developement') == 'developement':
+	DefaultConfig = Devconfig
+elif env('FLASK_APP') == 'production':
+	DefaultConfig = Prodconfig 
+else :
+	DefaultConfig = Testconfig
+
+def create_app(config_class = DefaultConfig):
+	log = Logger('logbook' , INFO)
 	#show logging messages in terminal
 	StreamHandler(sys.stdout).push_application()
-
-	#referred to as a “logging channel”. The name you give such a channel
-	log = Logger('logbook' , INFO)
-	log.info('welcome to my application API')
+	log.info('welcome to my application API MODE {}'.format(env('FLASK_ENV','developement')))
 
 	app = connexion.FlaskApp(
 		    __name__, specification_dir='openapi/', options={"swagger_ui": False, "serve_spec": False}
