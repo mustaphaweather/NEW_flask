@@ -1,0 +1,27 @@
+[[source]]
+name = "pypi"
+url = "https://pypi.org/simple"
+verify_ssl = true
+
+[dev-packages]
+
+[packages]
+connexion = "*"
+pytest = "*"
+Flask = "*"
+pickle = "*"
+xgboost = "*"
+pandas = "*"
+scikit-learn = "==0.19.1"
+fastapi = "*"
+email-validator = "*"
+logbook = "*"
+environs = "*"
+pytest-cov = "*"
+pytest-mock = "*"
+mock = "*"
+unittest = "*"
+
+[requires]
+python_version = "3.6"
+

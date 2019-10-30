@@ -8,7 +8,6 @@ from environs import Env
 
 ### Setting environement configuration depending on environement variable
 env = Env()
-env.read_env() #read .env file
 if env('FLASK_ENV', 'developement') == 'developement':
 	DefaultConfig = Devconfig
 elif env('FLASK_APP') == 'production':
@@ -22,7 +21,7 @@ def create_app(config_class = DefaultConfig):
 		)
 	app.app.config.from_object(config_class)
 
-	log = Logger('logbook' , INFO)
+	log = Logger('logbook')
 	log.info(app.app.config['LOG_LEVEL'])
 	#show logging messages in terminal
 	StreamHandler(sys.stdout ,

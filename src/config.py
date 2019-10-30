@@ -4,7 +4,6 @@ import logbook
 
 ### insitalise env 
 env = Env()
-env.read_env()
 
 log_dict = {
 	"NOTSET": logbook.NOTSET ,
@@ -40,4 +39,6 @@ class Testconfig(Config):
 	ENVIRONEMENT = "test"
 	TESTING = True
 	LOG_LEVEL = log_dict.get(env("LOG_LEVEL", "NOTSET"))
+
+
 
