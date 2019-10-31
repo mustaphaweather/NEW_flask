@@ -21,7 +21,7 @@ pytest-cov = "*"
 pytest-mock = "*"
 mock = "*"
 unittest = "*"
+pytest-flask = "*"
 
 [requires]
 python_version = "3.6"
-

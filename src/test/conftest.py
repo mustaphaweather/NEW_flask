@@ -1,8 +1,10 @@
 import pytest
+import sys 
+sys.path.append("..")
+from __init__ import create_app
+from config import Testconfig
 
-@pytest.fixture(name = "sum")
-def sum(mocker):
-	mocker.patch("fixtures_all.aid_fix.to_",return_value = 0)
-	return 1 + fixtures_all.aid_fix.to_(1)
-
-
+@pytest.fixture
+def app():
+	app = create_app(Testconfig)
+	return app 
