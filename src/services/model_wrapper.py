@@ -32,7 +32,7 @@ class Model_wrapper():
 			log.debug('Machine Learning called model {}'.format(self.model))
 		else:
 			log.error('Something is wrong with model name : {}'.format(self.model_path))
-			raise Exception('this model name : {}'.format(self.model_name) + ' is not available')
+			raise ValueError('this model name : {}'.format(self.model_name) + ' is not available')
 
 	## predict function
 	def predict(self ,arr):

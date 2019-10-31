@@ -30,7 +30,14 @@ class class_unit(unittest.TestCase):
 		### Assert
 		self.assertEqual(Config.RND_MODEL_PATH, mod.model_path)
 
-		# Test model load
+	def test_model_load_path_notexistting(self):
+		### Arrange & Act
+		# mod = Model_wrapper("toto")
+		### Assert
+		with self.assertRaises(ValueError):
+			Model_wrapper("toto")
+
+	# Test model load
 	def test_model_load_model_xgb(self):
 		### Arrange & Act
 		mod = Model_wrapper("xgb")
@@ -49,7 +56,33 @@ class class_unit(unittest.TestCase):
 		### Assert
 		self.assertIsInstance(mod.model,sklearn.ensemble.RandomForestRegressor)
 
+	# Test predict reutnrs a list as result 
+	def test_predict_xgb(self):
+		### Arrange
+		arr = [[1,1,1,1,1],[1,1,1,1,1]]
+		### Act
+		res = Model_wrapper("xgb").predict(arr)
+		### Assert
+		self.assertIsInstance(res , list)
+
+	def test_predict_dpl(self):
+		### Arrange
+		arr = [[1,1,1,1,1],[1,1,1,1,1]]
+		### Act
+		res = Model_wrapper("dpl").predict(arr)
+		### Assert
+		self.assertIsInstance(res , list)
+
+	def test_predict_rnd(self):
+		### Arrange
+		arr = [[1,1,1,1,1],[1,1,1,1,1]]
+		### Act
+		res = Model_wrapper("rnd").predict(arr)
+		### Assert
+		self.assertIsInstance(res , list)
+
 	
+
 
 
 
