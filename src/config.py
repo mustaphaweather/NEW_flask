@@ -20,6 +20,10 @@ class Config:
 	DPL_MODEL_PATH = os.path.join(MODELS_DIR , 'deep_learning')
 	XGB_MODEL_PATH = os.path.join(MODELS_DIR , 'XGBRegressor')
 	RND_MODEL_PATH = os.path.join(MODELS_DIR , 'RandomForest')
+	KEY_PATH = os.path.join(APP_ROOT , 'ssl_code' , 'key.pem')
+	CERT_PATH = os.path.join(APP_ROOT , 'ssl_code' , 'cert.pem')
+	# KEY_PATH = os.path.join(APP_ROOT , 'ssl_code' , 'privateKey.key')
+	# CERT_PATH = os.path.join(APP_ROOT , 'ssl_code' , 'certificate.crt')
 
 
 #Developpement Config
