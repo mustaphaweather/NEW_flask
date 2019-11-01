@@ -22,6 +22,7 @@ pytest-mock = "*"
 mock = "*"
 unittest = "*"
 pytest-flask = "*"
+gevent = "*"
 
 [requires]
 python_version = "3.6"
